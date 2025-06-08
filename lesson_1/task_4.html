@@ -56,8 +56,25 @@
                            setEuro(parseFloat((newBalance) / 47.6).toFixed(2))
                         }
 
-                        const dollColor = ballance < 100 ? 'red' : 'green';
-                        const euroColor = ballance < 100 ? 'red' : 'green';
+                        function ballanceColor(ballance, operation) {
+                           let color
+                           if(operation === 'add') {
+                              color = 'green'
+                           } else if(operation === 'subtract') {
+                              color = 'red'
+                           }
+                           return color
+                        }
+
+                        function getColor(value, operation) {
+                           let color 
+                           if(value < 100) {
+                              color = 'red'
+                           } else {
+                              color = 'green'
+                           }
+                           return color
+                        } 
 
                         function changeAddSum(e) {
                            setAddSum(e.target.value)
@@ -100,7 +117,7 @@
                         
                         return (
                            <div>
-                              <p>Сума на рахунку: {ballance} грн</p>
+                              <p style={{color:ballanceColor(ballance, operation)}}>Сума на рахунку: {ballance} грн</p>
                               <div className="add-money">
                                  <label className="result__condition">
                                     Додати суму:
@@ -121,8 +138,8 @@
                               </div>
                               <hr/>
                               <div>
-                                 <p>Сума у долларах: <span className="doll" >{doll}</span> $</p>
-                                 <p>Сума у євро: <span className="euro">{euro}</span> euro</p>
+                                 <p>Сума у долларах: <span className="doll" style={{color:getColor(doll, operation)}}>{doll}</span> $</p>
+                                 <p>Сума у євро: <span className="euro" style={{color:getColor(euro, operation)}}>{euro}</span> euro</p>
                               </div>
                            </div>
                         )

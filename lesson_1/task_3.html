@@ -50,11 +50,13 @@
                      
                         return (
                            <div>
-                              <label className="result__condition">
-                                 Введіть початковий діапазон:
-                                 <input type="number" value={startNum} onChange={changeStartNum} />
-                              </label>
-                              <label className="result__condition">
+                             <div className="task3-box">
+                                 <label className="result__condition--third">
+                                    Введіть початковий діапазон:
+                                    <input type="number" value={startNum} onChange={changeStartNum} />
+                                 </label>
+                             </div>
+                                 <label className="result__condition--third">
                                  Введіть кінцевий діапазон:
                                  <input type="number" value={endNum} onChange={changeEndNum} />
                               </label>

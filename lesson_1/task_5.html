@@ -30,30 +30,48 @@
                <div id="root">
                   <script type="text/babel">
                      function App() {
-                        const [ballance, setBallance] = React.useState(0)
-                        const [addSum, setAddSum] = React.useState('')
 
-                        function changeAddSum(e) {
-                           setAddSum(e.target.value)
+                       const userData = {
+                           login: "Admin",
+                           password: "123"
+                       }
+
+                       const [login, setLogin] = React.useState('')
+                       const [password, setPassword] = React.useState('')
+                       const [message, setMessage] = React.useState('')
+
+                       function handleLogin(e) {
+                        setLogin(e.target.value)
+                       }
+
+                        function handlePassword(e) {
+                        setPassword(e.target.value)
+                       }
+
+                       const comparison = () => {
+                        if(userData.login === login && userData.password === password) {
+                           setMessage('Login successfull!')
+                        } else {
+                           setMessage('Login denied!')
                         }
-                     
-                        function changeSubtractSum(e) {
-                           setSubtractSum(e.target.value)
-                        }
-                     
+                        setLogin('')
+                        setPassword('')
+                       }
+
                         
                         return (
                            <div>
                               <p>Введіть логін та пароль</p>
-                              <label className="result__condition">
-                                 Log in:
-                                 <input type="text" value={addSum} onChange={changeAddSum} />
+                              <label className="result__condition--fifth">
+                                 Enter login:
+                                 <input type="text" value={login} onChange={handleLogin} />
                               </label>
-                              <label className="result__condition">
-                                 Password:
-                                 <input type="number" value={subtractSum} onChange={changeSubtractSum} />
+                              <label className="result__condition--fifth">
+                                 Enter password:
+                                 <input type="text" value={password} onChange={handlePassword} />
                               </label>
-                              <button onClick={subtractMoney}>log in</button>
+                              <button onClick={comparison}>Log in</button>
+                              <p>{message}</p>
                            </div>
                         )
                      }

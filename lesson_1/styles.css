@@ -63,6 +63,34 @@
    align-items: flex-start;
    justify-content: space-between;
 }
+.result__condition--first {
+   width: 500px;
+   margin-bottom: 20px;
+   font-size: 20px;
+   display: flex;
+   gap: 10px;
+   align-items: flex-start;
+   justify-content: space-between;
+}
+.result__condition--third {
+   width: 420px;
+   margin-bottom: 20px;
+   font-size: 20px;
+   display: flex;
+   gap: 10px;
+   align-items: flex-start;
+   justify-content: space-between;
+}
+
+.result__condition--fifth {
+   width: 320px;
+   margin-bottom: 20px;
+   font-size: 20px;
+   display: flex;
+   gap: 10px;
+   align-items: flex-start;
+   justify-content: space-between;
+}
 
 .season-img {
    width: 300px;
@@ -86,3 +114,7 @@ button {
    justify-content: space-between;
    align-items: flex-start;
 }
+
+/* .doll {
+   color: red;
+} */
