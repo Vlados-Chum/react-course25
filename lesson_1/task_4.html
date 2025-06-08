@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lesson 1</title>
+   <link rel="stylesheet" href="./styles.css">
+   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+   
+</head>
+<body>
+   <div class="wrapper">
+      <div class="task-page">
+         <div class="task-page__container">
+            <section class="task-page__section">
+               <h1 class="task-page__title">
+                  Homework: lesson 1 task 4
+               </h1>
+               <h2 class="task-page__assignment">
+                  “Рахунок у банку”
+                  Вимоги:
+                  1. Спочатку сума дорівнює 0грн. Змінити суму у гривнях можна або зарахуванням на рахунок, або зняттям.
+                  2. Сума автоматично переводиться у долари та євро (фіксований курс задається у data).
+                  3. можливість зарахувати суму (контролювати, щоб не була від’ємною)
+                  4. можливість зняти (щоб не можна зняти більше ніж є на рахунку)
+                  5. при виконанні зняття і зарахування коштів вираховувати 3% від суми (відображати кількість відсотків автоматично)
+                                 
+                  При зміні суми :
+                  - якщо було зняття, то суму відображати червоним
+                  - якщо було зарахування, то суму відображати зеленим
+                  Якщо сума валюти менша за 100 то відображати червоним кольором, інакше - зеленим
+
+               </h2>
+            </section>
+
+            <section class="react-section">
+               <h2 class="react-section__title">
+                  Result:
+               </h2>
+               <div id="root">
+                  <script type="text/babel">
+                     function App() {
+                        const [ballance, setBallance] = React.useState(0)
+                        const [addSum, setAddSum] = React.useState('')
+                        const [subtractSum, setSubtractSum] = React.useState('') 
+                        const [tax, setTax] = React.useState(0) 
+                        const [doll, setDoll] = React.useState(0)
+                        const [euro, setEuro] = React.useState(0)
+                        const [operation, setOperation] = React.useState('')
+
+                         
+                        function updateCurrency(newBalance) {
+                           setDoll(parseFloat((newBalance) / 41.2).toFixed(2))
+                           setEuro(parseFloat((newBalance) / 47.6).toFixed(2))
+                        }
+
+                        const dollColor = ballance < 100 ? 'red' : 'green';
+                        const euroColor = ballance < 100 ? 'red' : 'green';
+
+                        function changeAddSum(e) {
+                           setAddSum(e.target.value)
+                        }
+                     
+                        function changeSubtractSum(e) {
+                           setSubtractSum(e.target.value)
+                        }
+                     
+                        function addMoney() {
+                           if (addSum !== '' && addSum > 0) {
+                              setOperation('add')
+                              setBallance((prevBallance) => {
+                                 const newBalance = prevBallance + parseFloat(addSum)
+                                 updateCurrency(newBalance)
+                                 return newBalance
+                              });
+                           } else {
+                              alert('The operation is impossible')
+                           }
+                           setAddSum('')
+                           setTax(parseFloat(addSum / 100 * 3).toFixed(2))
+                        }
+
+                        function subtractMoney() {
+                           setOperation('subtract')
+                           if (ballance >= subtractSum && subtractSum !== '') {
+                              setBallance((prevBallance) => {
+                                 const newBalance = prevBallance - parseFloat(subtractSum)
+                                 updateCurrency(newBalance)
+                                 return newBalance
+                              });
+                           } else {
+                              alert('The operation is impossible')
+                           }
+                           setSubtractSum('');
+                           setTax(parseFloat(subtractSum / 100 * 3).toFixed(2))
+                        }
+                        
+                        
+                        return (
+                           <div>
+                              <p>Сума на рахунку: {ballance} грн</p>
+                              <div className="add-money">
+                                 <label className="result__condition">
+                                    Додати суму:
+                                    <input type="number" value={addSum} onChange={changeAddSum} />
+                                 </label>
+                                 <button onClick={addMoney}>Add money</button>
+                              </div>
+                              <div className="withdraw-money">
+                                 <label className="result__condition">
+                                    Зняти суму:
+                                    <input type="number" value={subtractSum} onChange={changeSubtractSum} />
+                                 </label>
+                                 <button onClick={subtractMoney}>Withdraw money</button>
+                              </div>
+                              <div>
+                                 <p>Відсотки за обслуговування: {tax} грн
+                                 </p>
+                              </div>
+                              <hr/>
+                              <div>
+                                 <p>Сума у долларах: <span className="doll" >{doll}</span> $</p>
+                                 <p>Сума у євро: <span className="euro">{euro}</span> euro</p>
+                              </div>
+                           </div>
+                        )
+                     }
+                     const root = ReactDOM.createRoot(document.getElementById('root'))
+                     root.render(React.createElement(App));
+                  </script>   
+               </div>
+            </section>
+
+         </div>
+      </div>
+   </div>
+</body>
+</html>

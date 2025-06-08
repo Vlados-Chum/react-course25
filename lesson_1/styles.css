@@ -54,15 +54,35 @@
    color: blue;
 } 
 
-.result__condition {
+.result__condition  {
+   width: 270px;
    margin-bottom: 20px;
    font-size: 20px;
    display: flex;
    gap: 10px;
    align-items: flex-start;
+   justify-content: space-between;
 }
 
 .season-img {
    width: 300px;
    height: 200px;
+}
+
+p {
+   font-style: italic;
+   font-size: 20px;
+}
+
+button {
+   margin-bottom: 20px;
+}
+
+.add-money,
+.withdraw-money {
+   display: flex;
+   gap: 30px;
+   width: 420px;
+   justify-content: space-between;
+   align-items: flex-start;
 }

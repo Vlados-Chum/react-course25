@@ -16,10 +16,10 @@
          <div class="task-page__container">
             <section class="task-page__section">
                <h1 class="task-page__title">
-                  Homework: lesson 1 task 3
+                  Homework: lesson 1 task 5
                </h1>
                <h2 class="task-page__assignment">
-                  Задано початок та кінець діапазону. При натисканні на кнопку випадковим чином генерувати значення з вказаного діапазону та відображати його.
+                  Додаток містить масив об’єктів (логін, пароль) --  існуючі логіни і паролі. Користувач вводить логін і пароль, а програма при натисненні на кнопку повідомляє чи може користувач бути авторизованим.
                </h2>
             </section>
 
@@ -30,38 +30,32 @@
                <div id="root">
                   <script type="text/babel">
                      function App() {
-                        const [startNum, setStartNum] = React.useState('');
-                        const [endNum, setEndNum] = React.useState('');
-                        const [randomNum, setRandomNum] = React.useState(null);  
-                     
-                        function changeStartNum(e) {
-                           setStartNum(e.target.value);
-                        }
-                        function changeEndNum(e) {
-                           setEndNum(e.target.value);
+                        const [ballance, setBallance] = React.useState(0)
+                        const [addSum, setAddSum] = React.useState('')
+
+                        function changeAddSum(e) {
+                           setAddSum(e.target.value)
                         }
                      
-                        function generateRandomNum() {
-                           if (startNum && endNum) {
-                              const random = Math.floor(Math.random() * (parseInt(endNum) - parseInt(startNum) + 1)) + parseInt(startNum);
-                              setRandomNum(random);  
-                           }
+                        function changeSubtractSum(e) {
+                           setSubtractSum(e.target.value)
                         }
                      
+                        
                         return (
                            <div>
+                              <p>Введіть логін та пароль</p>
                               <label className="result__condition">
-                                 Введіть початковий діапазон:
-                                 <input type="number" value={startNum} onChange={changeStartNum} />
+                                 Log in:
+                                 <input type="text" value={addSum} onChange={changeAddSum} />
                               </label>
                               <label className="result__condition">
-                                 Введіть кінцевий діапазон:
-                                 <input type="number" value={endNum} onChange={changeEndNum} />
+                                 Password:
+                                 <input type="number" value={subtractSum} onChange={changeSubtractSum} />
                               </label>
-                              <p>Випадкове число зі вказаного діапазону: {randomNum}</p>
-                              <button onClick={generateRandomNum}>Generate num</button>
+                              <button onClick={subtractMoney}>log in</button>
                            </div>
-                        );
+                        )
                      }
                      const root = ReactDOM.createRoot(document.getElementById('root'))
                      root.render(React.createElement(App));
