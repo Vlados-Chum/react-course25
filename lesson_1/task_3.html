@@ -30,21 +30,21 @@
                <div id="root">
                   <script type="text/babel">
                      function App() {
-                        const [startNum, setStartNum] = React.useState('');
-                        const [endNum, setEndNum] = React.useState('');
-                        const [randomNum, setRandomNum] = React.useState(null);  
+                        const [startNum, setStartNum] = React.useState('')
+                        const [endNum, setEndNum] = React.useState('')
+                        const [randomNum, setRandomNum] = React.useState(null) 
                      
                         function changeStartNum(e) {
-                           setStartNum(e.target.value);
+                           setStartNum(e.target.value)
                         }
                         function changeEndNum(e) {
-                           setEndNum(e.target.value);
+                           setEndNum(e.target.value)
                         }
                      
                         function generateRandomNum() {
                            if (startNum && endNum) {
-                              const random = Math.floor(Math.random() * (parseInt(endNum) - parseInt(startNum) + 1)) + parseInt(startNum);
-                              setRandomNum(random);  
+                              const random = Math.floor(Math.random() * (parseInt(endNum) - parseInt(startNum) + 1)) + parseInt(startNum)
+                              setRandomNum(random)
                            }
                         }
                      
@@ -66,7 +66,7 @@
                         );
                      }
                      const root = ReactDOM.createRoot(document.getElementById('root'))
-                     root.render(React.createElement(App));
+                     root.render(React.createElement(App))
                   </script>   
                </div>
             </section>
