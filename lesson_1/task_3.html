@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lesson 1</title>
+   <link rel="stylesheet" href="./styles.css">
+   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+   
+</head>
+<body>
+   <div class="wrapper">
+      <div class="task-page">
+         <div class="task-page__container">
+            <section class="task-page__section">
+               <h1 class="task-page__title">
+                  Homework: lesson 1 task 2
+               </h1>
+               <h2 class="task-page__assignment">
+                  Задано початок та кінець діапазону. При натисканні на кнопку випадковим чином генерувати значення з вказаного діапазону та відображати його.
+               </h2>
+            </section>
+
+            <section class="react-section">
+               <h2 class="react-section__title">
+                  Result:
+               </h2>
+               <div id="root">
+   
+                  <script type="text/babel">
+               
+                     function App() {
+                        
+                        const [monthNum, setMonthNum] = React.useState(1)
+
+                        function changeMonth(e) {
+                           setMonthNum(e.target.value)
+                        }
+
+                        
+
+                           return (
+                              <div>
+                                 <p>{`Ваш місяць: ${monthName}`}</p>
+                                 <p>{`Ваша пора року: ${getSeason(monthNum)}`}</p>
+                                 <p>{`По порі року Вам слід вдягнути ${getClothesItem(monthNum)}`}</p>
+                                 
+                              </div>
+                           )
+                        }
+                        
+                        return (
+                           <div>
+                              <label className="result__condition">
+                                 Введіть номер місяця року:
+                                 <input type="number" value={monthNum} onChange={changeMonth} min="1" 
+                                 max="12" minLength="50" />
+                              </label>
+                              <div>
+                                 <Advice monthNum={monthNum} />
+                              </div>
+                              
+                           </div>
+                        )
+                  
+                  
+                     }
+                     const root = ReactDOM.createRoot(document.getElementById('root'))
+               
+                     root.render(React.createElement(App))
+                  </script>   
+               </div>
+            </section>
+
+         </div>
+      </div>
+   </div>
+</body>
+</html>

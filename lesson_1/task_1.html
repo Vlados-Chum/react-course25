@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lesson 1</title>
+   <link rel="stylesheet" href="./styles.css">
+   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+   
+</head>
+<body>
+   <div class="wrapper">
+      <div class="task-page">
+         <div class="task-page__container">
+            <section class="task-page__section">
+               <h1 class="task-page__title">
+                  Homework: lesson 1 task 1
+               </h1>
+               <h2 class="task-page__assignment">
+                  Вводиться кількість пасажирів. Вивести:
+                  скільки потрібно автобусів (кожен автобус на 20 місць),
+                  скільки пляшок води (кожному пасажиру 2 пляшки),
+                  скільки бутербродів (кожному пасажиру 3 бутерброди).
+               </h2>
+            </section>
+
+            <section class="react-section">
+               <h2 class="react-section__title">
+                  Result:
+               </h2>
+               <div id="root">
+   
+                  <script type="text/babel">
+               
+                     function App() {
+                        
+                        const [passengers, setPassengers] = React.useState(0)
+
+                        function changePassengers(e) {
+                           setPassengers(e.target.value)
+                        }
+
+                        function Conclusion ({busCount, waterBottlesCount, sandvichesCount}) {
+                           return (
+                           <div>
+                              <p>{`Для перевезення пасажирів потрібно ${busCount} автобусів`}</p>
+                              <p>{`Всього пасажирам потрібно ${waterBottlesCount} пляшок води`}</p>
+                              <p>{`Всього пасажирам потрібно ${sandvichesCount} бутербродів`}</p>
+                           </div>
+                           )
+                        }
+                        
+                        return (
+                           <div>
+                              <label className="result__condition">
+                                 Введіть кількість пасажирів на станції:
+                                 <input type="number" value={passengers} onChange={changePassengers} />
+                              </label>
+                              <Conclusion busCount={(Math.ceil(passengers / 20))} waterBottlesCount={passengers * 2} sandvichesCount={passengers * 3} />   
+                           </div>
+                        )
+                  
+                  
+                     }
+                     const root = ReactDOM.createRoot(document.getElementById('root'))
+               
+                     root.render(React.createElement(App))
+                  </script>   
+               </div>
+            </section>
+
+         </div>
+      </div>
+   </div>
+</body>
+</html>

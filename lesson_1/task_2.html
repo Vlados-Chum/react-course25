@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Lesson 1</title>
+   <link rel="stylesheet" href="./styles.css">
+   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+   
+</head>
+<body>
+   <div class="wrapper">
+      <div class="task-page">
+         <div class="task-page__container">
+            <section class="task-page__section">
+               <h1 class="task-page__title">
+                  Homework: lesson 1 task 2
+               </h1>
+               <h2 class="task-page__assignment">
+                  Вводиться номер місяця. Автоматично виводити рекомендований одяг (зима – пальто, літо – шорти ….). Також автоматично виводити зображення з відповідним зображенням лісу (зима – ліс зі снігом, осінь – жовтий ліс, …).
+               </h2>
+            </section>
+
+            <section class="react-section">
+               <h2 class="react-section__title">
+                  Result:
+               </h2>
+               <div id="root">
+   
+                  <script type="text/babel">
+               
+                     function App() {
+                        
+                        const [monthNum, setMonthNum] = React.useState(1)
+
+                        function changeMonth(e) {
+                           setMonthNum(e.target.value)
+                        }
+
+                        function Advice({monthNum}) {
+                           let monthNames = ['січень', 'лютий', 'березень', 'квітень', 'травень', 'червень', 'липень', 'серпень', 'вересень', 'жовтень', 'листопад', 'грудень']
+                           let monthName = monthNames[monthNum - 1]
+
+                           let seasons = ['зима', 'весна', 'літо', 'осінь']
+                           let seasonName
+                           let clothes = ['шубу', 'спортивний костюм', 'шорти та футболку']
+                           let clothesItem
+                           let src
+
+                           function getSeason(monthNum) {
+                              if(monthNum <=2) {
+                                 seasonName = seasons[0]
+                              } else if(monthNum >= 3 && monthNum <= 5) {
+                                 seasonName = seasons[1]
+                              } else if(monthNum >= 6 && monthNum <= 8) {
+                                 seasonName = seasons[2]
+                              } else if (monthNum >= 9 && monthNum <= 11) {
+                                 seasonName = seasons[3]
+                              } else {
+                                 seasonName = seasons[0]
+                              }
+                              return seasonName
+                           }
+
+                         
+                           function getClothesItem(monthNum) {
+                              if(monthNum <=2) {
+                                 clothesItem = clothes[0]
+                              } else if(monthNum <= 5) {
+                                 clothesItem = clothes[1]
+                              } else if(monthNum <= 8) {
+                                 clothesItem = clothes[2]
+                              } else if(monthNum <= 11) {
+                                 clothesItem = clothes[1]
+                              } else {
+                                 clothesItem = clothes[0]
+                              }
+                              return clothesItem
+                           }
+
+                           function getSrc(monthNum) {
+                              if(monthNum <=2) {
+                                 src = 'https://img.goodfon.ru/original/3000x1640/f/58/lofoten-norway-lofotenskie.jpg'
+                              } else if(monthNum <= 5) {
+                                 src = 'https://img.freepik.com/free-photo/beautiful-shot-green-field-covered-with-yellow-flowers-near-cherry-blossom-trees_181624-24215.jpg'
+                              } else if(monthNum <= 8) {
+                                 src = 'https://img.goodfon.ru/wallpaper/big/9/20/leto-reka-les-solnce-peyzazh.webp'
+                              } else if(monthNum <= 11) {
+                                 src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmibfufy_ssghwiDqc6W2XgupMcFEo_hgG_Q&s'
+                              } else {
+                                 src = 'https://img.goodfon.ru/original/3000x1640/f/58/lofoten-norway-lofotenskie.jpg'
+                              }
+                              return src
+                           }
+                           
+                           console.log(src)
+
+
+                           return (
+                              <div>
+                                 <p>{`Ваш місяць: ${monthName}`}</p>
+                                 <p>{`Ваша пора року: ${getSeason(monthNum)}`}</p>
+                                 <p>{`По порі року Вам слід вдягнути ${getClothesItem(monthNum)}`}</p>
+                                 <img src={getSrc(monthNum)} className="season-img" />
+                              </div>
+                           )
+                        }
+                        
+                        return (
+                           <div>
+                              <label className="result__condition">
+                                 Введіть номер місяця року:
+                                 <input type="number" value={monthNum} onChange={changeMonth} min="1" 
+                                 max="12" minLength="50" />
+                              </label>
+                              <div>
+                                 <Advice monthNum={monthNum}/>
+                              </div>
+                              
+                           </div>
+                        )
+                  
+                  
+                     }
+                     const root = ReactDOM.createRoot(document.getElementById('root'))
+               
+                     root.render(React.createElement(App))
+                  </script>   
+               </div>
+            </section>
+
+         </div>
+      </div>
+   </div>
+</body>
+</html>

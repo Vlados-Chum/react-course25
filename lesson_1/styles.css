@@ -1,0 +1,68 @@
+.body {
+   margin: 0 !important;
+}
+
+.front-page,
+.task-page {
+   background-color: azure;
+   width: 100%;
+   min-height: 100vh;
+}
+
+.front-page__container,
+.task-page__container {
+   width: 1250px;
+   padding-block: 20px;
+   padding-inline: 15px;
+   margin: 0 auto;
+}
+
+.front-page__title,
+.task-page__title {
+   font-weight: 700;
+   font-size: 32px;
+   letter-spacing: 1px;
+   margin: 0;
+   color: blue;
+   margin-bottom: 20px;
+}
+
+.tasks__list {
+   margin: 0;
+   padding-left: 15px;
+}
+
+.tasks__item,
+.task-page__assignment {
+   font-size: 20px;
+   line-height: 1.5;
+   font-weight: 600;
+}
+
+.tasks__link-item {
+   text-decoration: none;
+   cursor: pointer;
+}
+
+.task-page__section {
+   margin-bottom: 50px;
+}
+
+.react-section__title {
+   font-size: 32px;
+   font-weight: 600;
+   color: blue;
+} 
+
+.result__condition {
+   margin-bottom: 20px;
+   font-size: 20px;
+   display: flex;
+   gap: 10px;
+   align-items: flex-start;
+}
+
+.season-img {
+   width: 300px;
+   height: 200px;
+}
